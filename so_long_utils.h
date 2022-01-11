@@ -1,15 +1,12 @@
 #ifndef SO_LONG_UTILS_H
 #define SO_LONG_UTILS_H
 
-typedef struct s_vector
+typedef struct s_img
 {
 	int	x;
 	int	y;
-}t_vector;
-
-typedef struct s_img
-{
-	/* data */
+	int	size;
+	
 }t_img;
 
 typedef struct s_map
@@ -23,10 +20,14 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_vector	position;
-	t_map		picture;
-	
-};
+	t_map	picture;
+	t_img	collection;
+	t_img	start;
+	t_img	exit;
+	t_img	wall;
+	t_img	floor;
+	t_img	character;
+}t_game;
 
 
 #endif
