@@ -3,6 +3,6 @@
 
 char	*error(char *mes)
 {
-	printf("%s", mes);
+	printf("%s\n", mes);
 	return(0);
 }
