@@ -15,5 +15,7 @@ int		main(int ac, char *av);
 char	*error(char *mes)
 void	map_valid(char *av, t_game geme);
 int		check_len(char **map);
+void	init_character(t_game game);
+
 
 #endif

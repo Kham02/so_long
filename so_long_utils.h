@@ -18,10 +18,11 @@ typedef struct s_count
 	int	wall;
 }t_count;
 
-typedef struct s_player
+typedef struct s_character
 {
-	
-}t_player;
+	int	x;
+	int	y;
+}t_character;
 
 
 typedef struct s_map
@@ -42,7 +43,7 @@ typedef struct s_game
 	t_img	exit;
 	t_img	wall;
 	t_img	floor;
-	t_img	character;
+	t_character	character;
 	t_count	count;
 }t_game;
 
