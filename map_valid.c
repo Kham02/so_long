@@ -14,7 +14,7 @@ int	check_len(char **map)
 	{
 		n = ft_strlen(map[i]);
 		if (len != n)
-			error("invalid map (length mismatch)");
+			error(&game, "invalid map (length mismatch)");
 		i++;
 	}
 	return(len);
@@ -22,23 +22,21 @@ int	check_len(char **map)
 
 static void check_wall(t_count count, char **map, int width, int height)
 {
-	int	i;
 	int	n;
 
-	i = 0;
 	n = 0;
-	while (map[height][n] && map[0][n] != '\n')
+	while (map[height][n]  != '\n' && map[0][n] != '\n')
 	{
-		if (map[height][n] && map[0][n] == "0")
-			error("invalid map (wall)");
+		if (map[height][n] != "1" && map[0][n] != "1")
+			error(&game, "invalid map (wall)");
 		n++;
 	}
 	n = 0;
-	while (map[i][0] && map[i][width] != NULL)
+	while (map[n][0] != NULL && map[n][width] != NULL)
 	{
-		if (map[i][0] && map[i][width] == "0")
-			error("invalid map (wall)");
-		i++;
+		if (map[n][0] != "1" && map[n][width] != "1")
+			error(&game, "invalid map (wall)");
+		n++;
 	}
 }
 
@@ -53,29 +51,49 @@ static int	counter(t_game game, char *line)
 	count.floor = 0;
 	while (line[i] != '\0')
 	{
+		if (line[i] != "1" || line[i] != "0" || line[i] != "P" || line[i] != "C" || line[i] != "E")
+			error(&game, "extra objects");
 		if (line[i] == "C")
 			count.collect++;
 		if (line[i] == "E")
 			count.exit++;
 		if (line[i] == "P")
 			count.start++;
-			if (line[i] == "0")
-			count.floor++;
 		i++;
 	}
-	if (count.collect < 1 || count.exit < 1 || count.start != 1 || count.floor < 3)
-		error("invalid map (C, E, P, 0)");
+	if (count.collect < 1 || count.exit < 1 || count.start != 1)
+		error(&game, "invalid map (C, E, P, 0)");
 	return(count);
 }
 
-void	map_valid(char *av, t_game game)
+static int	map_name(char *av)
+{
+	int	i;
+	char	*str;
+
+	i = 0;
+	str = ft_strrchr(av, ".");
+	s = ft_strdup(".ber");
+	while (str[i] && s[i])
+	{
+		if (str[i] != s[i])
+			return(0);
+		i++;
+	}
+	return(1);
+}
+
+void	map_valid(char *av, t_game *game)
 {
 	int	fd;
 
+	if (map_name(av) != 1)
+		error(&game, "incorrect map name");
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		error("invalid file");
+		error(&game, "invalid file");
 	game->picture.line1 = ft_strdup("");
+	game->picture.line2 = ft_strdup("");
 	game->picture.height = 0;
 	while (fd)
 	{

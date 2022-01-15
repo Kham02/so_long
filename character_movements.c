@@ -23,3 +23,23 @@ void	init_character(t_game game)
 		i++;
 	}
 }
+
+void	chr_left()
+{
+
+}
+
+void	chr_right()
+{
+
+}
+
+void	chr_up()
+{
+
+}
+
+void	chr_down()
+{
+	
+}
