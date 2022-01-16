@@ -8,6 +8,9 @@ int	main(int ac, char *av)
 	if (ac != 1)
 		error(&game, "invalid number of parameters");
 	map_valid(av[1], &game);
+	mlx = create_window();
+	mlx_loop(&mlx);
+}
 	/*
 	проверить название карты перед валидностью		**DONE**
 	записать координаты объектов
@@ -24,5 +27,3 @@ int	main(int ac, char *av)
 	проверка на шаги и проверка на выигрышь (все монетки собраны и координа ты перса = коорд выхода (сравнивать со всми возможными))
 	*/
 	// mlx_hook(переменная окна (указатель mlx_new_window), 17, 1L << 0, функция для закрытия окна, game);
-	mlx_loop(уазатель mlx_init);
-}

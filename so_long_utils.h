@@ -23,6 +23,12 @@ typedef struct s_character
 	int	y;
 }t_character;
 
+// typedef struct s_obj
+// {
+// 	int	x[100];
+// 	int	y[100];
+// }t_obj;
+
 
 typedef struct s_map
 {
@@ -44,6 +50,7 @@ typedef struct s_game
 	t_img		floor;
 	t_character	character;
 	t_count		count;
+	// t_obj		coord;
 }t_game;
 
 

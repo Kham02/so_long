@@ -16,7 +16,7 @@ void	init_character(t_game game)
 			{
 				game->character.y = i;
 				game->character.x = n;
-				
+				mlx_
 			}
 			n++;
 		}

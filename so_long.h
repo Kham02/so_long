@@ -17,7 +17,8 @@ void	map_valid(char *av, t_game geme);
 int		check_len(char **map);
 void	init_character(t_game game);
 void	end_game(t_game *game);
-
+void	draw_map(t_game game);
+void	search_obj(t_game *game);
 
 
 #endif
