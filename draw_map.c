@@ -26,3 +26,19 @@ void	draw_map(t_game game)
 	}
 }
 
+void	new_img(void *mlx, char *str)
+{
+	t_img	imgs;
+
+	imgs = mlx_xpm_file_to_image(mlx, path, &img.height, &img.width);
+	return (imgs);
+}
+
+void	images(t_game game)
+{
+	game->collection = new_img(mlx, "");
+	game->floor = new_img(mlx, "");
+	game->wall = new_img(mlx, "");
+	game->exit = new_img(mlx, "");
+	game->chrct = new_img(mlx, "");
+}

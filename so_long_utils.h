@@ -4,7 +4,7 @@
 typedef struct s_img
 {
 	void	*img; // адрес картинки
-	int		height;;
+	int		height;
 	int		width;
 }t_img;
 
@@ -48,8 +48,10 @@ typedef struct s_game
 	t_img		exit;
 	t_img		wall;
 	t_img		floor;
+	t_img		chrct;
 	t_character	character;
 	t_count		count;
+	void		*mlx;
 	// t_obj		coord;
 }t_game;
 
