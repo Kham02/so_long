@@ -38,6 +38,8 @@ static void check_wall(t_count count, char **map, int width, int height)
 			error(&game, "invalid map (wall)");
 		n++;
 	}
+	if (game->picture.height == game->picture.width)
+		error(&game, "not a rectangular map");
 }
 
 static int	counter(t_game game, char *line)

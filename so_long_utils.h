@@ -17,11 +17,11 @@ typedef struct s_count
 	int	wall;
 }t_count;
 
-typedef struct s_character
-{
-	int	x;
-	int	y;
-}t_character;
+// typedef struct s_character
+// {
+// 	int	x;
+// 	int	y;
+// }t_character;
 
 // typedef struct s_obj
 // {
@@ -42,17 +42,16 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_map		picture;
-	t_img		collection;
-	t_img		start;
-	t_img		exit;
-	t_img		wall;
-	t_img		floor;
-	t_img		chrct;
-	t_character	character;
-	t_count		count;
-	void		*mlx;
-	// t_obj		coord;
+	t_map	picture;
+	t_img	collection;
+	t_img	exit;
+	t_img	wall;
+	t_img	floor;
+	t_img	character;
+	t_count	count;
+	void	*mlx;
+	void	*mlx_win;
+	// t_obj	coord;
 }t_game;
 
 

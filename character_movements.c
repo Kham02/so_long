@@ -14,32 +14,12 @@ void	init_character(t_game game)
 		{
 			if (game->picture.map[i][n] == "P")
 			{
-				game->character.y = i;
-				game->character.x = n;
-				mlx_
+				game->character.height = i;
+				game->character.width = n;
+				game->character.img = mlx_xpm_file_to_image(mlx, "", &img.height, &img.width);
 			}
 			n++;
 		}
 		i++;
 	}
-}
-
-void	chr_left()
-{
-
-}
-
-void	chr_right()
-{
-
-}
-
-void	chr_up()
-{
-
-}
-
-void	chr_down()
-{
-	
 }

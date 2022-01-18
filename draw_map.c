@@ -30,7 +30,7 @@ void	new_img(void *mlx, char *str)
 {
 	t_img	imgs;
 
-	imgs = mlx_xpm_file_to_image(mlx, path, &img.height, &img.width);
+	imgs = mlx_xpm_file_to_image(mlx, str, &img.height, &img.width);
 	return (imgs);
 }
 
