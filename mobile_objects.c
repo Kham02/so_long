@@ -22,17 +22,17 @@ void	init_chrct_cllc(t_game *game)
 	}
 }
 
-void	draw(t_game game, int i, int n)
+void	draw(t_game *game, int i, int n)
 {
 	int	kol;
 
 	kol = 0;
 	if (game->picture.map[i][n] == "P")
 	{
-		game->character.height = i;
-		game->character.width = n;
-		game->character.img = mlx_xpm_file_to_image(game->mlx, "", i, n);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->character, n, int i);
+		game->chrct.height = i;
+		game->chrct.width = n;
+		game->chrct.img = mlx_xpm_file_to_image(game->mlx, "", i, n);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->chrct, n, int i);
 	}
 	if (game->picture.map[i][n] == "C")
 	{

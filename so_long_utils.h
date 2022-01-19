@@ -24,6 +24,13 @@ typedef struct s_collect
 	int		width[100];
 }t_collect;
 
+typedef struct s_chrc
+{
+	void	*img;
+	int		height;
+	int		width;
+}t_chrct;
+
 typedef struct s_map
 {
 	char	**map;
@@ -42,6 +49,7 @@ typedef struct s_game
 	t_img		wall;
 	t_img		floor;
 	t_img		character;
+	t_chrct		chrct;
 	t_count		count;
 	void		*mlx;
 	void		*mlx_win;

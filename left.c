@@ -3,5 +3,6 @@
 
 static int	check_left(t_game game)
 {
-
+	if ((game->picture.width - 1) * 35 == "1")
+		
 }
