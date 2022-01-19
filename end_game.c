@@ -1,7 +1,7 @@
 #include "so_long.h"
 #include "so_long_utils.h"
 
-void	destroy_img(t_game game)
+void	destroy_img(t_game *game)
 {
 	mlx_destroy_images(game->mlx, game->wall.img);
 	mlx_destroy_images(game->mlx, game->floor.img);
@@ -13,7 +13,7 @@ void	destroy_img(t_game game)
 	free(game->mlx);
 }
 
-char	*error(t_game *game, char *mes)
+char	error(t_game *game, char *mes)
 {
 	printf("%s\n", mes);
 	destroy_img(&game);
@@ -35,7 +35,7 @@ void	free_map(t_game *game)
 	i = 0;
 	while (game->picture.map[i])
 	{
-		free(game->picture.map[i])
+		free(game->picture.map[i]);
 		game->picture.map[i] = NULL;
 		i++;
 	}

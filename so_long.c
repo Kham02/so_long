@@ -8,8 +8,8 @@ int	main(int ac, char *av)
 	if (ac != 1)
 		error(&game, "invalid number of parameters");
 	map_valid(av[1], &game);
-	create_window(&mlx);
-	mlx_loop(&mlx);
+	create_window(&game);
+	// mlx_loop(&mlx);
 }
 	/*
 	проверить название карты перед валидностью		**DONE**

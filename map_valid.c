@@ -1,18 +1,18 @@
 #include "so_long.h"
 #include "so_long_utils.h"
 
-int	check_len(char **map)
+static int	check_len(t_game *game)
 {
 	int	i;
 	int	n;
 	int len;
 
-	len = ft_strlen(map[0]);
+	len = ft_strlen(game->picture.map[0]);
 	n = 0;
 	i = 0;
-	while (map[i])
+	while (game->picture.map[i])
 	{
-		n = ft_strlen(map[i]);
+		n = ft_strlen(game->picture.map[i]);
 		if (len != n)
 			error(&game, "invalid map (length mismatch)");
 		i++;
@@ -20,7 +20,7 @@ int	check_len(char **map)
 	return(len);
 }
 
-static void check_wall(t_count count, char **map, int width, int height)
+static void check_wall(t_game *game, char **map, int width, int height)
 {
 	int	n;
 
@@ -42,30 +42,29 @@ static void check_wall(t_count count, char **map, int width, int height)
 		error(&game, "not a rectangular map");
 }
 
-static int	counter(t_game game, char *line)
+static int	counter(t_game *game, char *line)
 {
-	t_count	count;
+	int	i;
 
-	count = 0;
-	count.start = 0;
-	count.exit = 0;
-	count.collect = 0;
-	count.floor = 0;
+	i = 0;
+	game->count.start = 0;
+	game->count.exit = 0;
+	game->count.collect = 0;
+	game->count.floor = 0;
 	while (line[i] != '\0')
 	{
 		if (line[i] != "1" || line[i] != "0" || line[i] != "P" || line[i] != "C" || line[i] != "E")
 			error(&game, "extra objects");
 		if (line[i] == "C")
-			count.collect++;
+			game->count.collect++;
 		if (line[i] == "E")
-			count.exit++;
+			game->count.exit++;
 		if (line[i] == "P")
-			count.start++;
+			game->count.start++;
 		i++;
 	}
-	if (count.collect < 1 || count.exit < 1 || count.start != 1)
+	if (game->count.collect < 1 || game->count.exit < 1 || game->count.start != 1)
 		error(&game, "invalid map (C, E, P, 0)");
-	return(count);
 }
 
 static int	map_name(char *av)
@@ -106,9 +105,9 @@ void	map_valid(char *av, t_game *game)
 		free(game->picture.line1);
 		game->picture.height++;
 	}
-	game->count = counter(game, game->picture.line2);
+	counter(&game, game->picture.line2);
 	game->picture.map = ft_split(game->picture.line2, '\n');
 	free(game->picture.line2);
 	game->picture.width = check_len(game->picture.map);
-	check_wall(game->count, game->picture.map, game->picture.width, game->picture.height);
+	check_wall(&game, game->picture.map, game->picture.width, game->picture.height);
 }
