@@ -15,6 +15,7 @@ typedef struct s_count
 	int	collect;
 	int	floor;
 	int	wall;
+	int	mov;
 }t_count;
 
 typedef struct s_collect

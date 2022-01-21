@@ -5,7 +5,7 @@ int	main(int ac, char *av)
 {
 	t_game	game;
 
-	if (ac != 1)
+	if (ac != 2)
 		error(&game, "invalid number of parameters");
 	map_valid(av[1], &game);
 	create_window(&game);
