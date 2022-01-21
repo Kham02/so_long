@@ -18,13 +18,6 @@ typedef struct s_count
 	int	mov;
 }t_count;
 
-typedef struct s_collect
-{
-	void	*img;
-	int		height[100];
-	int		width[100];
-}t_collect;
-
 typedef struct s_chrc
 {
 	void	*img;
