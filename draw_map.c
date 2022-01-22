@@ -1,7 +1,7 @@
 #include "so_long.h"
 #include "so_long_utils.h"
 
-static void	draw_map(t_game *game)
+void	draw_map(t_game *game)
 {
 	int	i;
 	int	n;

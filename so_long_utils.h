@@ -48,7 +48,6 @@ typedef struct s_game
 	void		*mlx;
 	void		*mlx_win;
 	t_collect	collect;
-	// t_obj	coord;
 }t_game;
 
 
