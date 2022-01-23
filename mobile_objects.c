@@ -1,5 +1,4 @@
 #include "so_long.h"
-#include "so_long_utils.h"
 
 void	init_chrct_cllc(t_game *game)
 {
@@ -31,15 +30,15 @@ void	draw(t_game *game, int i, int n)
 	{
 		game->chrct.height = i;
 		game->chrct.width = n;
-		game->chrct.img = mlx_xpm_file_to_image(game->mlx, "", i, n);
+		game->chrct.img = mlx_xpm_file_to_image(game->mlx, "sprites/player_01.xpm", i, n);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->chrct, n, int i);
 	}
 	if (game->picture.map[i][n] == "C")
 	{
 		game->collect.height[kol] = i;
 		game->collect.width[kol] = n;
-		game->collect.img = mlx_xpm_file_to_image(game->mlx, "", i, n);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->collection, n, int i);
+		game->collect.img = mlx_xpm_file_to_image(game->mlx, "sprites/plant_03.xpm", i, n);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->collection, n, i);
 	}
 	kol++;
 }

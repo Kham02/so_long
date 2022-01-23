@@ -14,7 +14,7 @@ static int	check_len(t_game *game)
 	{
 		n = ft_strlen(game->picture.map[i]);
 		if (len != n)
-			error(&game, "invalid map (length mismatch)");
+			error(game, "invalid map (length mismatch)");
 		i++;
 	}
 	return(len);
@@ -27,15 +27,15 @@ static void check_wall(t_game *game, char **map, int width, int height)
 	n = 0;
 	while (map[height][n]  != '\n' && map[0][n] != '\n')
 	{
-		if (map[height][n] != "1" && map[0][n] != "1")
+		if (map[height][n] != '1' && map[0][n] != '1')
 			error(&game, "invalid map (wall)");
 		n++;
 	}
 	n = 0;
 	while (map[n][0] != NULL && map[n][width] != NULL)
 	{
-		if (map[n][0] != "1" && map[n][width] != "1")
-			error(&game, "invalid map (wall)");
+		if (map[n][0] != '1' && map[n][width] != '1')
+			error(game, "invalid map (wall)");
 		n++;
 	}
 	if (game->picture.height == game->picture.width)
@@ -53,18 +53,19 @@ static int	counter(t_game *game, char *line)
 	game->count.floor = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i] != "1" || line[i] != "0" || line[i] != "P" || line[i] != "C" || line[i] != "E")
-			error(&game, "extra objects");
-		if (line[i] == "C")
+		if (line[i] != '1' || line[i] != '0' || line[i] != 'P' || line[i] != 'C' || line[i] != 'E')
+			error(game, "extra objects");
+		if (line[i] == 'C')
 			game->count.collect++;
-		if (line[i] == "E")
+		if (line[i] == 'E')
 			game->count.exit++;
-		if (line[i] == "P")
+		if (line[i] == 'P')
 			game->count.start++;
 		i++;
 	}
 	if (game->count.collect < 1 || game->count.exit < 1 || game->count.start != 1)
 		error(&game, "invalid map (C, E, P, 0)");
+	return(0);
 }
 
 static int	map_name(char *av)
@@ -73,7 +74,7 @@ static int	map_name(char *av)
 	char	*str;
 
 	i = 0;
-	str = ft_strrchr(av, ".");
+	str = ft_strrchr(av[2], ".");
 	s = ft_strdup(".ber");
 	while (str[i] && s[i])
 	{

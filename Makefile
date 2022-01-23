@@ -6,13 +6,13 @@
 #    By: estrong <estrong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 13:59:17 by estrong           #+#    #+#              #
-#    Updated: 2022/01/08 15:34:35 by estrong          ###   ########.fr        #
+#    Updated: 2022/01/23 19:34:47 by estrong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
-OBJ		=	so_long.c
+OBJ		=	so_long.c	draw_map.c	end_game.c	map_valid.c	mobile_objects.c	mov.c
 
 SRCS	=	$(patsubst %.c,%.o,$(OBJ))
 
@@ -38,10 +38,12 @@ $(NAME):	$(OBJ) $(HEADER)
 %.o: %.c $(HEADER)
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
-clean :		#@make clean -C $(LFT)#
-				rm -rf $(SRCS)
+clean :
+	@make clean -C $(LFT)#
+			rm -rf $(SRCS)
 
-fclean :	#@make fclean -C $(LFT)#
-				rm -rf $(NAME)
+fclean :
+	@make fclean -C $(LFT)#
+			rm -rf $(NAME)
 
 re :		fclean all

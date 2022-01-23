@@ -1,8 +1,9 @@
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
-#include "../libft/libft.h"
-#include "../gnl/get_next_line.h"
+#include "libft/libft.h"
+#include "gnl/get_next_line.h"
+#include "so_long_utils.h"
 
 #include <stdio.h>
 #include <fcntl.h>
@@ -11,7 +12,7 @@
 #include <mlx.h>
 
 
-int		main(int ac, char *av);
+int		main(int ac, char **av);
 char	error(t_game *game, char *mes);
 void	destroy_img(t_game *game);
 void	end_game(t_game *game);

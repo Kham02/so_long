@@ -47,8 +47,6 @@ typedef struct s_game
 	t_count		count;
 	void		*mlx;
 	void		*mlx_win;
-	t_collect	collect;
 }t_game;
-
 
 #endif
