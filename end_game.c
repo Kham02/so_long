@@ -14,7 +14,7 @@ void	destroy_img(t_game *game)
 
 char	error(t_game *game, char *mes)
 {
-	printf("%s\n", mes);
+	ft_printf("%s\n", mes);
 	destroy_img(game);
 	exit(1);
 	return(0);

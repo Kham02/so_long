@@ -13,11 +13,11 @@ void	draw_map(t_game *game)
 		while (game->picture.map[i][n])
 		{
 			if (game->picture.map[i][n] == '1')
-				draw(&game, i, n);
+				draw(game, i, n);
 			if (game->picture.map[i][n] == '0')
-				draw(&game i, n);
+				draw(game i, n);
 			if (game->picture.map[i][n] == 'E')
-				draw(&game i, n);
+				draw(game i, n);
 			n++;
 		}
 		i++;
@@ -38,7 +38,7 @@ static t_img	new_img(void *mlx, char *str)
 {
 	t_img	imgs;
 
-	imgs.img = mlx_xpm_file_to_image(mlx, str, &imgs.height, &imgs.width);
+	imgs.img = mlx_xpm_file_to_image(mlx, str, imgs.height, imgs.width);
 	return (imgs);
 }
 

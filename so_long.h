@@ -2,7 +2,8 @@
 #define SO_LONG_H
 
 #include "libft/libft.h"
-#include "gnl/get_next_line.h"
+#include "ft_printf/ft_printf.h"
+// #include "gnl/get_next_line.h"
 #include "so_long_utils.h"
 
 #include <stdio.h>

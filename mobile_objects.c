@@ -12,9 +12,9 @@ void	init_chrct_cllc(t_game *game)
 		while (game->picture.map[i][n])
 		{
 			if (game->picture.map[i][n] == "P")
-				draw(&game, i, n);
+				draw(game, i, n);
 			if (game->picture.map[i][n] == "C")
-				draw(&game, i, n);
+				draw(game, i, n);
 			n++;
 		}
 		i++;
