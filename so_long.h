@@ -3,7 +3,7 @@
 
 #include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
-// #include "gnl/get_next_line.h"
+#include "gnl/get_next_line.h"
 #include "so_long_utils.h"
 
 #include <stdio.h>
@@ -21,7 +21,7 @@ void	free_map(t_game *game);
 void	end_game(t_game *game);
 void	map_valid(char *av, t_game *game);
 void	init_chrct_cllc(t_game *game);
-void	draw(t_game *game, int i, int n);
+void	draw_mobile(t_game *game, int i, int n);
 void	create_window(t_game *game);
 void	draw_map(t_game *game);
 void	right(t_game *game);

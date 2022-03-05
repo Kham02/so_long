@@ -32,7 +32,6 @@ static void	draw(t_game *game, int i, int n)
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor, n, int i);
 	if (game->picture.map[i][n] == 'E')
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit, n, int i);
-	init_chrct_cllc(game);
 }
 static t_img	new_img(void *mlx, char *str)
 {
@@ -53,4 +52,5 @@ void	create_window(t_game *game)
 {	
 	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 35, game->picture.height * 35, "so_long");
 	draw_map(game);
+	init_chrct_cllc(game);
 }

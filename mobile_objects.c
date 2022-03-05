@@ -21,7 +21,7 @@ void	init_chrct_cllc(t_game *game)
 	}
 }
 
-void	draw(t_game *game, int i, int n)
+void	draw_mobile(t_game *game, int i, int n)
 {
 	int	kol;
 

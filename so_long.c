@@ -4,6 +4,7 @@ int	main(int ac, char **av)
 {
 	t_game	game;
 
+	game->mlx = mlx_init();
 	if (ac != 2)
 		error(&game, "Error\n invalid number of parameters");
 	map_valid(av[1], &game);
