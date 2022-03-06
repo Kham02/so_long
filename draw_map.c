@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/06 13:30:24 by estrong           #+#    #+#             */
+/*   Updated: 2022/03/06 13:30:26 by estrong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	draw_map(t_game *game)
@@ -15,25 +27,25 @@ void	draw_map(t_game *game)
 			if (game->picture.map[i][n] == '1')
 				draw(game, i, n);
 			if (game->picture.map[i][n] == '0')
-				draw(game i, n);
+				draw(game, i, n);
 			if (game->picture.map[i][n] == 'E')
-				draw(game i, n);
+				draw(game, i, n);
 			n++;
 		}
 		i++;
 	}
 }
 
-static void	draw(t_game *game, int i, int n)
+void	draw(t_game *game, int i, int n)
 {
 	if (game->picture.map[i][n] == '1')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall, n, int i);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall.img, n, i);
 	if (game->picture.map[i][n] == '0')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor, n, int i);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.img, n, i);
 	if (game->picture.map[i][n] == 'E')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit, n, int i);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit.img, n, i);
 }
-static t_img	new_img(void *mlx, char *str)
+t_img	new_img(void *mlx, char *str)
 {
 	t_img	imgs;
 
@@ -41,11 +53,11 @@ static t_img	new_img(void *mlx, char *str)
 	return (imgs);
 }
 
-static void	images(t_game *game)
+void	images(t_game *game)
 {
-	game->floor = new_img(game->mlx, "sprites/wall_dr.xpm");
-	game->wall = new_img(game->mlx, "sprites/wall_02.xpm");
-	game->exit = new_img(game->mlx, "sprites/door_01.xpm");
+	game->floor = new_img(game->mlx, "img/wall_dr.xpm");
+	game->wall = new_img(game->mlx, "img/wall_02.xpm");
+	game->exit = new_img(game->mlx, "img/door_01.xpm");
 }
 
 void	create_window(t_game *game)

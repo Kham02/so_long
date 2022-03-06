@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_utils.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/06 13:31:14 by estrong           #+#    #+#             */
+/*   Updated: 2022/03/06 13:31:15 by estrong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_UTILS_H
 #define SO_LONG_UTILS_H
 
@@ -18,13 +30,6 @@ typedef struct s_count
 	int	mov;
 }t_count;
 
-typedef struct s_chrc
-{
-	void	*img;
-	int		height;
-	int		width;
-}t_chrct;
-
 typedef struct s_map
 {
 	char	**map;
@@ -43,7 +48,7 @@ typedef struct s_game
 	t_img		wall;
 	t_img		floor;
 	t_img		character;
-	t_chrct		chrct;
+	t_img		chrct;
 	t_count		count;
 	void		*mlx;
 	void		*mlx_win;

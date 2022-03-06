@@ -1,6 +1,7 @@
 {
 	"files.associations": {
-		"__config": "c"
+		"__config": "c",
+		"get_next_line.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

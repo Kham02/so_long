@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_valid.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
+/*   Updated: 2022/03/06 13:46:46 by estrong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
-#include "so_long_utils.h"
 
 static int	check_len(t_game *game)
 {
@@ -32,7 +43,7 @@ static void check_wall(t_game *game, char **map, int width, int height)
 		n++;
 	}
 	n = 0;
-	while (map[n][0] != NULL && map[n][width] != NULL)
+	while (map[n][0]&& map[n][width])
 	{
 		if (map[n][0] != '1' && map[n][width] != '1')
 			error(game, "Error\n invalid map (wall)");
@@ -75,7 +86,7 @@ static int	map_name(char *av)
 	char	*s;
 
 	i = 0;
-	str = ft_strrchr(av[2], ".");
+	str = ft_strnstr(av, ".", 1);
 	s = ft_strdup(".ber");
 	while (str[i] && s[i])
 	{
@@ -92,7 +103,7 @@ void	map_valid(char *av, t_game *game)
 
 	if (map_name(av) != 1)
 		error(game, "Error\n incorrect map name");
-	fd = open(av[1], O_RDONLY);
+	fd = open(av, O_RDONLY);
 	if (fd < 0)
 		error(game, "Error\n invalid file");
 	game->picture.line1 = ft_strdup("");
@@ -103,13 +114,13 @@ void	map_valid(char *av, t_game *game)
 		game->picture.line1 = get_next_line(fd);
 		if (game->picture.line1 == NULL)
 			break;
-		game->picture.line2 = g_ft_strjoin(game->picture.line2, game->picture.line1);
+		game->picture.line2 = ft_strjoin(game->picture.line2, game->picture.line1);
 		free(game->picture.line1);
 		game->picture.height++;
 	}
 	counter(game, game->picture.line2);
 	game->picture.map = ft_split(game->picture.line2, '\n');
 	free(game->picture.line2);
-	game->picture.width = check_len(game->picture.map);
+	game->picture.width = check_len(game);
 	check_wall(game, game->picture.map, game->picture.width, game->picture.height);
 }

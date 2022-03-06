@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/06 13:31:11 by estrong           #+#    #+#             */
+/*   Updated: 2022/03/06 13:47:31 by estrong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
+#include "Libft/libft.h"
+#include "Printf_42/ft_printf.h"
 #include "gnl/get_next_line.h"
+
 #include "so_long_utils.h"
 
 #include <stdio.h>
@@ -29,5 +42,7 @@ void	up(t_game *game);
 void	left(t_game *game);
 void	down(t_game *game);
 void	key(int key, t_game *game);
-
+void	images(t_game *game);
+void	draw(t_game *game, int i, int n);
+t_img	new_img(void *mlx, char *str);
 #endif
