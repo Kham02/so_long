@@ -44,15 +44,15 @@ void	draw_mobile(t_game *game, int i, int n)
 	{
 		game->chrct.height = i;
 		game->chrct.width = n;
-		game->chrct.img = mlx_xpm_file_to_image(game->mlx, "img/player_01.xpm", &width, &height); //беды просит указатель на координаты
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->chrct.img, &game->chrct.width, &game->chrct.height);	//беды просит указатель на координаты
+		game->chrct.img = mlx_xpm_file_to_image(game->mlx, "img/player_01.xpm", &width, &height);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->chrct.img, n * 35, i * 35);
 	}
 	if (game->picture.map[i][n] == 'C')
 	{
-		game->collection.height[kol] = i;
-		game->collection.width[kol] = n;
-		game->collection.img = mlx_xpm_file_to_image(game->mlx, "img/plant_03.xpm", &width, &height);	//беды просит указатель на координаты
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->collection.img, &game->collection.width, &game->collection.height);	//беды просит указатель на координаты
+		game->collection.height = i;
+		game->collection.width = n;
+		game->collection.img = mlx_xpm_file_to_image(game->mlx, "img/plant_03.xpm", &width, &height);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->collection.img, n * 35, i * 35);
 	}
 	kol++;
 }
