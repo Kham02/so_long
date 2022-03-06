@@ -39,11 +39,11 @@ void	draw_map(t_game *game)
 void	draw(t_game *game, int i, int n)
 {
 	if (game->picture.map[i][n] == '1')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall.img, n, i);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall.img, n * 35, i * 35);
 	if (game->picture.map[i][n] == '0')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.img, n, i);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.img,n * 35, i * 35);
 	if (game->picture.map[i][n] == 'E')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit.img, n, i);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit.img, n * 35, i * 35);
 }
 t_img	new_img(void *mlx, char *str)
 {
