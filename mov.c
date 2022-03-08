@@ -6,13 +6,13 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:06 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/06 13:40:39 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:48:45 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	key(int key, t_game *game)
+int	key(int key, t_game *game)
 {
 	if (key == 53)
 		end_game(game);
@@ -24,6 +24,7 @@ void	key(int key, t_game *game)
 		left(game);
 	if (key == 2)
 		right(game);
+	return (0);
 }
 
 void	right(t_game *game)

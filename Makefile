@@ -6,23 +6,23 @@
 #    By: estrong <estrong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 13:59:17 by estrong           #+#    #+#              #
-#    Updated: 2022/01/23 19:34:47 by estrong          ###   ########.fr        #
+#    Updated: 2022/03/08 20:13:56 by estrong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
-OBJ		=	so_long.c	draw_map.c	end_game.c	map_valid.c	mobile_objects.c	mov.c
+OBJ		=	so_long.c	draw_map.c	end_game.c	map_valid.c	mobile_objects.c	mov.c	get_next_line.c	get_next_line_utils.c
 
 SRCS	=	$(patsubst %.c,%.o,$(OBJ))
 
 HEADER	=	so_long.h
 
-LFT		=	libft
+LFT		=	Libft
 
-INC		=	-I ./inc -I ./libft -I ./mlx
+# INC		=	-I ./inc -I ./Libft -I ./mlx
 
-LIB		=	-L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
+# LIB		=	-L Libft/libft.a -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
 
 CC		=	gcc
 
@@ -33,17 +33,19 @@ FLAGS	=	-Wall -Wextra -Werror -I$(HEADER)
 all :	$(NAME)
 
 $(NAME):	$(OBJ) $(HEADER)
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(MAKE) -C ./Libft
+	# $(CC) -c ${FLAGS} ${OBJ} -I Libft/libft.a
+	$(CC) -lmlx -framework OpenGL -framework AppKit $(FLAGS) $(OBJ) Libft/libft.a -o $(NAME)
 
 %.o: %.c $(HEADER)
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 clean :
-	@make clean -C $(LFT)#
+	@make clean -C $(LFT)
 			rm -rf $(SRCS)
 
 fclean :
-	@make fclean -C $(LFT)#
+	@make fclean -C $(LFT)
 			rm -rf $(NAME)
 
 re :		fclean all

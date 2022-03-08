@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:24 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/06 13:30:26 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:53:27 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_img	new_img(void *mlx, char *str)
 {
 	t_img	imgs;
 
-	imgs.img = mlx_xpm_file_to_image(mlx, str, imgs.height, imgs.width);
+	imgs.img = mlx_xpm_file_to_image(mlx, str, &imgs.height, &imgs.width);
 	return (imgs);
 }
 
