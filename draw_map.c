@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:24 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/08 17:53:27 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 18:55:52 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,17 @@ void	draw_map(t_game *game)
 		}
 		i++;
 	}
+	init_chrct_cllc(game);
 }
 
 void	draw(t_game *game, int i, int n)
 {
 	if (game->picture.map[i][n] == '1')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall.img, n * 35, i * 35);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall.img, n * 32, i * 32);
 	if (game->picture.map[i][n] == '0')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.img,n * 35, i * 35);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.img, n * 32, i * 32);
 	if (game->picture.map[i][n] == 'E')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit.img, n * 35, i * 35);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit.img, n * 32, i * 32);
 }
 t_img	new_img(void *mlx, char *str)
 {
@@ -55,14 +56,16 @@ t_img	new_img(void *mlx, char *str)
 
 void	images(t_game *game)
 {
-	game->floor = new_img(game->mlx, "img/wall_dr.xpm");
-	game->wall = new_img(game->mlx, "img/wall_02.xpm");
-	game->exit = new_img(game->mlx, "img/door_01.xpm");
+	game->floor = new_img(game->mlx, "img/floor.xpm");
+	game->wall = new_img(game->mlx, "img/tree.xpm");
+	game->exit = new_img(game->mlx, "img/portal.xpm");
+	game->collection = new_img(game->mlx, "img/potion2.xpm");
+	game->chrct = new_img(game->mlx, "img/right_1__.xpm");
 }
 
 void	create_window(t_game *game)
-{	
-	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 35, game->picture.height * 35, "so_long");
+{
+	game->count.mov = 0;
+	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 32, game->picture.height * 32, "so_long");
 	draw_map(game);
-	init_chrct_cllc(game);
 }

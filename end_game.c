@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:33 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/08 20:21:01 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 16:37:02 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	destroy_img(t_game *game)
 	mlx_destroy_image(game->mlx, game->floor.img);
 	mlx_destroy_image(game->mlx, game->collection.img);
 	mlx_destroy_image(game->mlx, game->exit.img);
-	mlx_destroy_image(game->mlx, game->character.img);
+	mlx_destroy_image(game->mlx, game->chrct.img);
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	free_map(game);
 	free(game->mlx);

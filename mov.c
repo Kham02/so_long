@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:06 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/08 17:48:45 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 18:55:43 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void	right(t_game *game)
 			game->picture.map[game->chrct.height][game->chrct.width + 1] = '0';
 		}
 		game->picture.map[game->chrct.height][game->chrct.width] = '0';
+		game->picture.map[game->chrct.height][game->chrct.width + 1] = 'P';
 		game->count.mov += 1;
+		write(2, &game->count.mov, 10);
 		game->chrct.width += 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
 		draw_map(game);
@@ -52,13 +54,15 @@ void	up(t_game *game)
 	{
 		if (game->picture.map[game->chrct.height - 1][game->chrct.width] == 'E')
 			end_game(game);
-		if (game->picture.map[game->chrct.height][game->chrct.width + 1] == 'C')
+		if (game->picture.map[game->chrct.height - 1][game->chrct.width] == 'C')
 		{
 			game->count.collect--;
-			game->picture.map[game->chrct.height][game->chrct.width + 1] = '0';
+			game->picture.map[game->chrct.height - 1][game->chrct.width] = '0';
 		}
 		game->picture.map[game->chrct.height][game->chrct.width] = '0';
+		game->picture.map[game->chrct.height - 1][game->chrct.width] = 'P';
 		game->count.mov += 1;
+		write(2, &game->count.mov, 1);
 		game->chrct.height -= 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
 		draw_map(game);
@@ -71,13 +75,15 @@ void	left(t_game *game)
 	{
 		if (game->picture.map[game->chrct.height][game->chrct.width - 1] == 'E')
 			end_game(game);
-		if (game->picture.map[game->chrct.height][game->chrct.width + 1] == 'C')
+		if (game->picture.map[game->chrct.height][game->chrct.width - 1] == 'C')
 		{
 			game->count.collect--;
-			game->picture.map[game->chrct.height][game->chrct.width + 1] = '0';
+			game->picture.map[game->chrct.height][game->chrct.width - 1] = '0';
 		}
 		game->picture.map[game->chrct.height][game->chrct.width] = '0';
+		game->picture.map[game->chrct.height][game->chrct.width - 1] = 'P';
 		game->count.mov += 1;
+		write(2, &game->count.mov, 1);
 		game->chrct.width -= 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
 		draw_map(game);
@@ -90,13 +96,15 @@ void	down(t_game *game)
 	{
 		if (game->picture.map[game->chrct.height + 1][game->chrct.width] == 'E')
 			end_game(game);
-		if (game->picture.map[game->chrct.height][game->chrct.width + 1] == 'C')
+		if (game->picture.map[game->chrct.height + 1][game->chrct.width] == 'C')
 		{
 			game->count.collect--;
-			game->picture.map[game->chrct.height][game->chrct.width + 1] = '0';
+			game->picture.map[game->chrct.height + 1][game->chrct.width] = '0';
 		}
 		game->picture.map[game->chrct.height][game->chrct.width] = '0';
+		game->picture.map[game->chrct.height + 1][game->chrct.width] = 'P';
 		game->count.mov += 1;
+		write(2, &game->count.mov, 1);
 		game->chrct.height += 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
 		draw_map(game);

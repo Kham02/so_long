@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:17 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/06 14:15:14 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 18:17:28 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	init_chrct_cllc(t_game *game)
 
 void	draw_mobile(t_game *game, int i, int n)
 {
-	int	height;
-	int	width;
 	int	kol;
 
 	kol = 0;
@@ -44,15 +42,13 @@ void	draw_mobile(t_game *game, int i, int n)
 	{
 		game->chrct.height = i;
 		game->chrct.width = n;
-		game->chrct.img = mlx_xpm_file_to_image(game->mlx, "img/player_01.xpm", &width, &height);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->chrct.img, n * 35, i * 35);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->chrct.img, n * 32, i * 32);
 	}
 	if (game->picture.map[i][n] == 'C')
 	{
 		game->collection.height = i;
 		game->collection.width = n;
-		game->collection.img = mlx_xpm_file_to_image(game->mlx, "img/plant_03.xpm", &width, &height);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->collection.img, n * 35, i * 35);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->collection.img, n * 32, i * 32);
 	}
 	kol++;
 }

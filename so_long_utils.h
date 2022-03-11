@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/06 13:31:15 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 16:34:33 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef struct s_img
 {
-	void	*img; // адрес картинки
+	void	*img;
 	int		height;
 	int		width;
 }t_img;
@@ -42,16 +42,15 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_map		picture;
-	t_img		collection;
-	t_img		exit;
-	t_img		wall;
-	t_img		floor;
-	t_img		character;
-	t_img		chrct;
-	t_count		count;
-	void		*mlx;
-	void		*mlx_win;
+	t_map	picture;
+	t_img	collection;
+	t_img	exit;
+	t_img	wall;
+	t_img	floor;
+	t_img	chrct;
+	t_count	count;
+	void	*mlx;
+	void	*mlx_win;
 }t_game;
 
 #endif

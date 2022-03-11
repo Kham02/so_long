@@ -6,13 +6,13 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/08 21:02:59 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 17:20:00 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int check_len(t_game *game)
+static int	check_len(t_game *game)
 {
 	int i;
 	int n;
@@ -31,21 +31,23 @@ static int check_len(t_game *game)
 	return (len);
 }
 
-static void check_wall(t_game *game, char **map, int width, int height)
+static void	check_wall(t_game *game, char **map, int width, int height)
 {
-	int n;
+	int	n;
+	int	i;
 
+	i = 0;
 	n = 0;
-	while (map[height][n] != '\n' && map[0][n] != '\n')
+	while (n < width && map[i][n] != '\0')
 	{
-		if (map[height][n] != '1' && map[0][n] != '1')
+		if (map[height - 1][n] != '1' || map[0][n] != '1')
 			error("Error\n invalid map (wall)");
 		n++;
 	}
 	n = 0;
-	while (map[n][0] && map[n][width])
+	while (n < height && map[i][n] != '\0')
 	{
-		if (map[n][0] != '1' && map[n][width] != '1')
+		if (map[n][0] != '1' || map[n][width - 1] != '1')
 			error("Error\n invalid map (wall)");
 		n++;
 	}
@@ -53,35 +55,31 @@ static void check_wall(t_game *game, char **map, int width, int height)
 		error("Error\n not a rectangular map");
 }
 
-static int counter(t_game *game, char **map)
+static void	counter(t_game *game, char *line2)
 {
 	int	i;
-	int	n;
 
 	i = 0;
 	game->count.start = 0;
 	game->count.exit = 0;
 	game->count.collect = 0;
 	game->count.floor = 0;
-	while (map[i])
+	while (line2[i])
 	{
-		while (map[i][n])
-		{
-			n = 0;
-			if (map[i][n] != '1' && map[i][n] != '0' && map[i][n] != 'P' && map[i][n] != 'C' && map[i][n] != 'E')
-				error("Error\n extra objects");
-			if (map[i][n] == 'C')
-				game->count.collect++;
-			if (map[i][n] == 'E')
-				game->count.exit++;
-			if (map[i][n] == 'P')
-				game->count.start++;
-		}
+		if (line2[i] == '\n')
+			i++;
+		if (line2[i] != '1' && line2[i] != '0' && line2[i] != 'P' && line2[i] != 'C' && line2[i] != 'E')
+			error("Error\n extra objects");
+		if (line2[i] == 'C')
+			game->count.collect++;
+		if (line2[i] == 'E')
+			game->count.exit++;
+		if (line2[i] == 'P')
+			game->count.start++;
 		i++;
 	}
 	if (game->count.collect < 1 || game->count.exit < 1 || game->count.start != 1)
 		error("Error\n invalid map (C, E, P, 0)");
-	return (0);
 }
 
 static void map_name(char *av)
@@ -96,8 +94,12 @@ static void map_name(char *av)
 
 void map_valid(char *av, t_game *game)
 {
-	int fd;
+	int	fd;
+	int	i;
+	int	n;
 
+	i = 0;
+	n = 0;
 	map_name(av);
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
@@ -105,7 +107,7 @@ void map_valid(char *av, t_game *game)
 	game->picture.line1 = ft_strdup("");
 	game->picture.line2 = ft_strdup("");
 	game->picture.height = 0;
-	while (fd)
+	while (fd >= 0)
 	{
 		game->picture.line1 = get_next_line(fd);
 		if (game->picture.line1 == NULL)
@@ -114,9 +116,10 @@ void map_valid(char *av, t_game *game)
 		free(game->picture.line1);
 		game->picture.height++;
 	}
+	counter(game, game->picture.line2);
 	game->picture.map = ft_split(game->picture.line2, '\n');
-	counter(game, game->picture.map);
 	free(game->picture.line2);
 	game->picture.width = check_len(game);
 	check_wall(game, game->picture.map, game->picture.width, game->picture.height);
+	// write(2, "sdfsdf", 6);
 }
