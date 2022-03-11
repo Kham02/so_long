@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:06 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 18:55:43 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:16:00 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	right(t_game *game)
 		game->picture.map[game->chrct.height][game->chrct.width] = '0';
 		game->picture.map[game->chrct.height][game->chrct.width + 1] = 'P';
 		game->count.mov += 1;
-		write(2, &game->count.mov, 10);
+		ft_putnbr_fd(game->count.mov, 1);
+		write(1, "\n", 1);
 		game->chrct.width += 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
 		draw_map(game);
@@ -62,7 +63,8 @@ void	up(t_game *game)
 		game->picture.map[game->chrct.height][game->chrct.width] = '0';
 		game->picture.map[game->chrct.height - 1][game->chrct.width] = 'P';
 		game->count.mov += 1;
-		write(2, &game->count.mov, 1);
+		ft_putnbr_fd(game->count.mov, 1);
+		write(1, "\n", 1);
 		game->chrct.height -= 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
 		draw_map(game);
@@ -83,7 +85,8 @@ void	left(t_game *game)
 		game->picture.map[game->chrct.height][game->chrct.width] = '0';
 		game->picture.map[game->chrct.height][game->chrct.width - 1] = 'P';
 		game->count.mov += 1;
-		write(2, &game->count.mov, 1);
+		ft_putnbr_fd(game->count.mov, 1);
+		write(1, "\n", 1);
 		game->chrct.width -= 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
 		draw_map(game);
@@ -104,7 +107,8 @@ void	down(t_game *game)
 		game->picture.map[game->chrct.height][game->chrct.width] = '0';
 		game->picture.map[game->chrct.height + 1][game->chrct.width] = 'P';
 		game->count.mov += 1;
-		write(2, &game->count.mov, 1);
+		ft_putnbr_fd(game->count.mov, 1);
+		write(1, "\n", 1);
 		game->chrct.height += 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
 		draw_map(game);
