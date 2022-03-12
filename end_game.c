@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:33 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 16:37:02 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:21:43 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	error(char *mes)
 	write(2, mes, ft_strlen(mes));
 	write(2, "\n", 1);
 	exit(1);
-	return(0);
+	return (0);
 }
 
 int	end_game(t_game *game)

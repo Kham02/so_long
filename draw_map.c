@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:24 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 18:55:52 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:20:57 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,16 @@ void	draw_map(t_game *game)
 void	draw(t_game *game, int i, int n)
 {
 	if (game->picture.map[i][n] == '1')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall.img, n * 32, i * 32);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall.img, \
+		n * 32, i * 32);
 	if (game->picture.map[i][n] == '0')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.img, n * 32, i * 32);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.img, \
+		n * 32, i * 32);
 	if (game->picture.map[i][n] == 'E')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit.img, n * 32, i * 32);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit.img, \
+		n * 32, i * 32);
 }
+
 t_img	new_img(void *mlx, char *str)
 {
 	t_img	imgs;
@@ -66,6 +70,7 @@ void	images(t_game *game)
 void	create_window(t_game *game)
 {
 	game->count.mov = 0;
-	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 32, game->picture.height * 32, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 32, \
+	game->picture.height * 32, "so_long");
 	draw_map(game);
 }

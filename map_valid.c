@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 17:20:00 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:29:26 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	check_len(t_game *game)
 {
-	int i;
-	int n;
-	int len;
+	int	i;
+	int	n;
+	int	len;
 
 	len = ft_strlen(game->picture.map[0]);
 	n = 0;
@@ -68,7 +68,8 @@ static void	counter(t_game *game, char *line2)
 	{
 		if (line2[i] == '\n')
 			i++;
-		if (line2[i] != '1' && line2[i] != '0' && line2[i] != 'P' && line2[i] != 'C' && line2[i] != 'E')
+		if (line2[i] != '1' && line2[i] != '0' && \
+		line2[i] != 'P' && line2[i] != 'C' && line2[i] != 'E')
 			error("Error\n extra objects");
 		if (line2[i] == 'C')
 			game->count.collect++;
@@ -78,11 +79,12 @@ static void	counter(t_game *game, char *line2)
 			game->count.start++;
 		i++;
 	}
-	if (game->count.collect < 1 || game->count.exit < 1 || game->count.start != 1)
+	if (game->count.collect < 1 || game->count.exit < 1 || \
+	game->count.start != 1)
 		error("Error\n invalid map (C, E, P, 0)");
 }
 
-static void map_name(char *av)
+static void	map_name(char *av)
 {
 	if (ft_strnstr(av, ".ber", ft_strlen(av)) == NULL)
 	{
@@ -92,7 +94,7 @@ static void map_name(char *av)
 	}
 }
 
-void map_valid(char *av, t_game *game)
+void	map_valid(char *av, t_game *game)
 {
 	int	fd;
 	int	i;
@@ -111,8 +113,9 @@ void map_valid(char *av, t_game *game)
 	{
 		game->picture.line1 = get_next_line(fd);
 		if (game->picture.line1 == NULL)
-			break;
-		game->picture.line2 = ft_strjoin(game->picture.line2, game->picture.line1);
+			break ;
+		game->picture.line2 = ft_strjoin(game->picture.line2, \
+		game->picture.line1);
 		free(game->picture.line1);
 		game->picture.height++;
 	}
@@ -120,6 +123,6 @@ void map_valid(char *av, t_game *game)
 	game->picture.map = ft_split(game->picture.line2, '\n');
 	free(game->picture.line2);
 	game->picture.width = check_len(game);
-	check_wall(game, game->picture.map, game->picture.width, game->picture.height);
-	// write(2, "sdfsdf", 6);
+	check_wall(game, game->picture.map, game->picture.width, \
+	game->picture.height);
 }

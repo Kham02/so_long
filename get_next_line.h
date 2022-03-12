@@ -6,20 +6,20 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 01:47:52 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/06 13:43:34 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:26:38 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 9
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 9
 
 char	*get_next_line(int fd);
 char	*ft_read(int fd, char *line);
@@ -32,5 +32,5 @@ char	*g_ft_strdup(const char *s1);
 char	*g_ft_substr(char *s, unsigned int start, size_t len);
 char	*g_ft_strjoin(char *s1, char *s2);
 
-#endif
+# endif
 #endif

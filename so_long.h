@@ -6,23 +6,23 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:11 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/08 20:21:42 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:22:29 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
-#include "Libft/libft.h"
-#include "get_next_line.h"
+# include "Libft/libft.h"
+# include "get_next_line.h"
 
-#include "so_long_utils.h"
+# include "so_long_utils.h"
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <mlx.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <mlx.h>
 
 int		main(int ac, char **av);
 char	error(char *mes);

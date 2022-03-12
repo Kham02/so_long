@@ -6,12 +6,12 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 16:34:33 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:23:44 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_UTILS_H
-#define SO_LONG_UTILS_H
+# define SO_LONG_UTILS_H
 
 typedef struct s_img
 {
@@ -38,7 +38,6 @@ typedef struct s_map
 	char	*line1;
 	char	*line2;
 }t_map;
-
 
 typedef struct s_game
 {

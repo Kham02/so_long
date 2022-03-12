@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:06 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 19:16:00 by estrong          ###   ########.fr       */
+/*   Updated: 2022/03/11 19:28:04 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	right(t_game *game)
 {
 	if (game->picture.map[game->chrct.height][game->chrct.width + 1] != '1')
 	{
-		if (game->picture.map[game->chrct.height][game->chrct.width + 1] == 'E' && game->count.collect == '0')
+		if (game->picture.map[game->chrct.height][game->chrct.width + 1] \
+		== 'E' && game->count.collect == '0')
 			end_game(game);
 		if (game->picture.map[game->chrct.height][game->chrct.width + 1] == 'C')
 		{
