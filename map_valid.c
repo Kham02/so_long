@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 19:29:26 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/01 19:12:32 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,7 @@ static void	map_name(char *av)
 void	map_valid(char *av, t_game *game)
 {
 	int	fd;
-	int	i;
-	int	n;
 
-	i = 0;
-	n = 0;
 	map_name(av);
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
