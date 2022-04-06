@@ -67,10 +67,10 @@ void	images(t_game *game)
 	game->chrct = new_img(game->mlx, "img/right_1__.xpm");
 }
 
-void	create_window(t_game *game)
-{
-	game->count.mov = 0;
-	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 32, \
-	game->picture.height * 32, "so_long");
-	draw_map(game);
-}
+// void	create_window(t_game *game)
+// {
+// 	game->count.mov = 0;
+// 	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 32, \
+// 	game->picture.height * 32, "so_long");
+// 	draw_map(game);
+// }

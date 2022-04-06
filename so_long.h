@@ -30,17 +30,22 @@ void	destroy_img(t_game *game);
 void	free_map(t_game *game);
 int		end_game(t_game *game);
 void	map_valid(char *av, t_game *game);
-void	init_chrct_cllc(t_game *game);
-void	draw_mobile(t_game *game, int i, int n);
+// void	init_chrct_cllc(t_game *game);
+// void	draw_mobile(t_game *game, int i, int n);
 void	create_window(t_game *game);
-void	draw_map(t_game *game);
+// void	draw_map(t_game *game);
 void	right(t_game *game);
 void	up(t_game *game);
 void	left(t_game *game);
 void	down(t_game *game);
 int		key(int key, t_game *game);
-void	images(t_game *game);
-void	draw(t_game *game, int i, int n);
-t_img	new_img(void *mlx, char *str);
+void	images(t_game *game, int m);
+// void	draw(t_game *game, int i, int n);
+// t_img	new_img(void *mlx, char *str);
+
+void	draw_mov(t_game *game, int m);
+void	draw_map_mov(t_game *game, int i, int n);
+t_img	new_img_mov(void *mlx, char *str);
+
 
 #endif

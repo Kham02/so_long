@@ -48,7 +48,7 @@ void	right(t_game *game)
 		write(1, "\n", 1);
 		game->chrct.width += 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
-		draw_map(game);
+		draw_mov(game, 1);
 	}
 }
 
@@ -73,7 +73,7 @@ void	up(t_game *game)
 		write(1, "\n", 1);
 		game->chrct.height -= 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
-		draw_map(game);
+		draw_mov(game, 3);
 	}
 }
 
@@ -98,7 +98,7 @@ void	left(t_game *game)
 		write(1, "\n", 1);
 		game->chrct.width -= 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
-		draw_map(game);
+		draw_mov(game, 2);
 	}
 }
 
@@ -123,6 +123,6 @@ void	down(t_game *game)
 		write(1, "\n", 1);
 		game->chrct.height += 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
-		draw_map(game);
+		draw_mov(game, 4);
 	}
 }
