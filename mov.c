@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:06 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/01 19:12:10 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:17:08 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	key(int key, t_game *game)
 {
+	game->mov = 0;
 	if (key == 53)
 		end_game(game);
 	if (key == 1)
@@ -48,7 +49,8 @@ void	right(t_game *game)
 		write(1, "\n", 1);
 		game->chrct.width += 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
-		draw_mov(game, 1);
+		game->mov = 0;
+		draw_map(game);
 	}
 }
 
@@ -73,7 +75,8 @@ void	up(t_game *game)
 		write(1, "\n", 1);
 		game->chrct.height -= 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
-		draw_mov(game, 3);
+		game->mov = 1;
+		draw_map(game);
 	}
 }
 
@@ -98,7 +101,8 @@ void	left(t_game *game)
 		write(1, "\n", 1);
 		game->chrct.width -= 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
-		draw_mov(game, 2);
+		game->mov = 2;
+		draw_map(game);
 	}
 }
 
@@ -123,6 +127,7 @@ void	down(t_game *game)
 		write(1, "\n", 1);
 		game->chrct.height += 1;
 		mlx_clear_window(game->mlx, game->mlx_win);
-		draw_mov(game, 4);
+		game->mov = 3;
+		draw_map(game);
 	}
 }

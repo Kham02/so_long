@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 13:30:28 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/07 14:22:12 by estrong          ###   ########.fr       */
+/*   Created: 2021/10/13 19:00:17 by estrong           #+#    #+#             */
+/*   Updated: 2022/03/11 12:04:29 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_game	*game;
+	unsigned char	*s1;
+	size_t			i;
 
-	game = malloc(sizeof(t_game));
-	if (ac != 2)
-		error("Error\n invalid number of parameters", game);
-	game->mlx = mlx_init();
-	map_valid(av[1], game);
-	create_window(game);
-	mlx_hook(game->mlx_win, 2, (1L << 1), key, game);
-	mlx_hook(game->mlx_win, 17, (1L << 0), end_game, game);
-	mlx_loop(game->mlx);
-	return (0);
+	s1 = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] == (unsigned char)c)
+			return (&s1[i]);
+		i++;
+	}
+	return (NULL);
 }

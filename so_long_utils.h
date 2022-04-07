@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 19:23:44 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:14:17 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_game
 	t_count	count;
 	void	*mlx;
 	void	*mlx_win;
+	int		mov;
 }t_game;
 
 #endif

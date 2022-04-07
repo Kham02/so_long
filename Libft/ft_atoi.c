@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 13:30:28 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/07 14:22:12 by estrong          ###   ########.fr       */
+/*   Created: 2022/01/07 19:15:41 by estrong           #+#    #+#             */
+/*   Updated: 2022/03/11 11:22:42 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_atoi(const char *str)
 {
-	t_game	*game;
+	int	num;
+	int	sign;
+	int	i;
 
-	game = malloc(sizeof(t_game));
-	if (ac != 2)
-		error("Error\n invalid number of parameters", game);
-	game->mlx = mlx_init();
-	map_valid(av[1], game);
-	create_window(game);
-	mlx_hook(game->mlx_win, 2, (1L << 1), key, game);
-	mlx_hook(game->mlx_win, 17, (1L << 0), end_game, game);
-	mlx_loop(game->mlx);
-	return (0);
+	num = 0;
+	sign = 1;
+	i = 0;
+	while (*(str + i) == 32 || (*(str + i) >= 9 && *(str + i) <= 13))
+		i++;
+	if (*(str + i) == '-')
+		sign = -1;
+	if (*(str + i) == '+' || *(str + i) == '-')
+		i++;
+	while (*(str + i) >= '0' && *(str + i) <= '9')
+		num = num * 10 + (*(str + i++) - 48);
+	return (num * sign);
 }

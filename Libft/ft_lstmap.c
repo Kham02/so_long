@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 13:30:28 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/07 14:22:12 by estrong          ###   ########.fr       */
+/*   Created: 2021/10/08 12:37:49 by abernita          #+#    #+#             */
+/*   Updated: 2022/03/12 15:50:01 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_game	*game;
+	t_list	*elem;
+	t_list	*ptr;
 
-	game = malloc(sizeof(t_game));
-	if (ac != 2)
-		error("Error\n invalid number of parameters", game);
-	game->mlx = mlx_init();
-	map_valid(av[1], game);
-	create_window(game);
-	mlx_hook(game->mlx_win, 2, (1L << 1), key, game);
-	mlx_hook(game->mlx_win, 17, (1L << 0), end_game, game);
-	mlx_loop(game->mlx);
-	return (0);
+	ptr = NULL;
+	while (lst)
+	{
+		elem = ft_lstnew((*f)(lst->content));
+		if (!elem)
+		{
+			ft_lstclear(&ptr, (*del));
+			return (NULL);
+		}
+		ft_lstadd_back(&ptr, elem);
+		lst = lst->next;
+	}
+	return (ptr);
 }

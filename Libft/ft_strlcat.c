@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 13:30:28 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/07 14:22:12 by estrong          ###   ########.fr       */
+/*   Created: 2021/10/14 13:47:02 by estrong           #+#    #+#             */
+/*   Updated: 2022/03/11 12:05:37 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	t_game	*game;
+	size_t	n;
+	size_t	s;
 
-	game = malloc(sizeof(t_game));
-	if (ac != 2)
-		error("Error\n invalid number of parameters", game);
-	game->mlx = mlx_init();
-	map_valid(av[1], game);
-	create_window(game);
-	mlx_hook(game->mlx_win, 2, (1L << 1), key, game);
-	mlx_hook(game->mlx_win, 17, (1L << 0), end_game, game);
-	mlx_loop(game->mlx);
-	return (0);
+	n = ft_strlen(dst);
+	s = ft_strlen(src);
+	if (n > dstsize)
+		return (s + dstsize);
+	else
+	{
+		dst = dst + n;
+		ft_strlcpy(dst, src, dstsize - n);
+		return (n + s);
+	}
 }

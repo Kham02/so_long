@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/06 13:30:28 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/07 14:22:12 by estrong          ###   ########.fr       */
+/*   Created: 2021/10/20 20:49:43 by estrong           #+#    #+#             */
+/*   Updated: 2022/03/11 12:06:40 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_game	*game;
+	char	*str;
+	size_t	i;
 
-	game = malloc(sizeof(t_game));
-	if (ac != 2)
-		error("Error\n invalid number of parameters", game);
-	game->mlx = mlx_init();
-	map_valid(av[1], game);
-	create_window(game);
-	mlx_hook(game->mlx_win, 2, (1L << 1), key, game);
-	mlx_hook(game->mlx_win, 17, (1L << 0), end_game, game);
-	mlx_loop(game->mlx);
-	return (0);
+	i = 0;
+	if (!s || !f)
+		return (NULL);
+	str = ft_strdup(s);
+	if (!str)
+		return (NULL);
+	while (str[i])
+	{
+		str[i] = (*f)(i, str[i]);
+		i++;
+	}
+	return (str);
 }

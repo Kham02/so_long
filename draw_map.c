@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:24 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 19:20:57 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:17:16 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,21 @@ void	images(t_game *game)
 	game->wall = new_img(game->mlx, "img/tree.xpm");
 	game->exit = new_img(game->mlx, "img/portal.xpm");
 	game->collection = new_img(game->mlx, "img/potion2.xpm");
-	game->chrct = new_img(game->mlx, "img/right_1__.xpm");
+	if (game->mov == 3)
+		game->chrct = new_img(game->mlx, "img/down.xpm");
+	else if (game->mov == 2)
+		game->chrct = new_img(game->mlx, "img/left.xpm");
+	else if (game->mov == 1)
+		game->chrct = new_img(game->mlx, "img/up.xpm");
+	if (game->mov == 0)
+		game->chrct = new_img(game->mlx, "img/right.xpm");
 }
 
-// void	create_window(t_game *game)
-// {
-// 	game->count.mov = 0;
-// 	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 32, \
-// 	game->picture.height * 32, "so_long");
-// 	draw_map(game);
-// }
+void	create_window(t_game *game)
+{
+	game->mov = 0;
+	game->count.mov = 0;
+	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 32, \
+	game->picture.height * 32, "so_long");
+	draw_map(game);
+}

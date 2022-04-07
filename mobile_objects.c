@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:17 by estrong           #+#    #+#             */
-/*   Updated: 2022/03/11 19:28:31 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/07 14:12:52 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ void	init_chrct_cllc(t_game *game)
 
 void	draw_mobile(t_game *game, int i, int n)
 {
-	int	kol;
-
-	kol = 0;
 	if (game->picture.map[i][n] == 'P')
 	{
 		game->chrct.height = i;
@@ -52,5 +49,4 @@ void	draw_mobile(t_game *game, int i, int n)
 		mlx_put_image_to_window(game->mlx, game->mlx_win, \
 		game->collection.img, n * 32, i * 32);
 	}
-	kol++;
 }
