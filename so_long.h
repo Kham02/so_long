@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:11 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/07 14:22:01 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/19 17:30:24 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,13 @@ int		key(int key, t_game *game);
 void	images(t_game *game);
 void	draw(t_game *game, int i, int n);
 t_img	new_img(void *mlx, char *str);
+void	draw_mini(t_game *game);
+void	chr_draw(t_game *game);
+void	draw_chr2(t_game *game);
+void	draw2(t_game *game, int i, int n);
+
+
+/*########### deb ###########*/
+void	print(t_game *game);
 
 #endif

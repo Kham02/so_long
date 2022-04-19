@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:28 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/07 14:22:12 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/18 17:14:52 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_game	*game;
 
-	game = malloc(sizeof(t_game));
+	game = (t_game *)malloc(sizeof(t_game));
 	if (ac != 2)
 		error("Error\n invalid number of parameters", game);
 	game->mlx = mlx_init();

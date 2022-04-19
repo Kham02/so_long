@@ -6,13 +6,14 @@
 #    By: estrong <estrong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 13:59:17 by estrong           #+#    #+#              #
-#    Updated: 2022/03/08 20:13:56 by estrong          ###   ########.fr        #
+#    Updated: 2022/04/18 18:43:13 by estrong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
-OBJ		=	so_long.c	draw_map.c	end_game.c	map_valid.c	mobile_objects.c	mov.c	get_next_line.c	get_next_line_utils.c
+OBJ		=	so_long.c	draw_map.c	end_game.c	map_valid.c	mobile_objects.c	mov.c	get_next_line.c	get_next_line_utils.c \
+			mini_draw.c
 
 SRCS	=	$(patsubst %.c,%.o,$(OBJ))
 
