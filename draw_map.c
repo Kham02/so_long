@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:24 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/18 18:48:33 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/21 15:50:23 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	draw_map(t_game *game)
 	int	i;
 	int	n;
 
-	i = 0;
 	images(game);
+	i = 0;
 	while (game->picture.map[i] != NULL)
 	{
 		n = 0;

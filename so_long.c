@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:28 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/18 17:14:52 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/21 16:45:47 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	game = (t_game *)malloc(sizeof(t_game));
 	if (ac != 2)
-		error("Error\n invalid number of parameters", game);
+		error("Error\n invalid number of parameters", game, 0);
 	game->mlx = mlx_init();
 	map_valid(av[1], game);
 	create_window(game);

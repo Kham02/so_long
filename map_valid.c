@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/18 17:23:00 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/21 16:45:43 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_len(t_game *game)
 	{
 		n = ft_strlen(game->picture.map[i]);
 		if (len != n)
-			error("Error\n invalid map (length mismatch)", game);
+			error("Error\n invalid map (length mismatch)", game, 1);
 		i++;
 	}
 	return (len);
@@ -41,18 +41,18 @@ static void	check_wall(t_game *game, char **map, int width, int height)
 	while (n < width && map[i][n] != '\0')
 	{
 		if (map[height - 1][n] != '1' || map[0][n] != '1')
-			error("Error\n invalid map (wall)", game);
+			error("Error\n invalid map (wall)", game, 1);
 		n++;
 	}
 	n = 0;
 	while (n < height && map[i][n] != '\0')
 	{
 		if (map[n][0] != '1' || map[n][width - 1] != '1')
-			error("Error\n invalid map (wall)", game);
+			error("Error\n invalid map (wall)", game, 1);
 		n++;
 	}
 	if (game->picture.height == game->picture.width)
-		error("Error\n not a rectangular map", game);
+		error("Error\n not a rectangular map", game, 1);
 }
 
 static void	counter(t_game *game, char *line2)
@@ -70,7 +70,7 @@ static void	counter(t_game *game, char *line2)
 			i++;
 		if (line2[i] != '1' && line2[i] != '0' && \
 		line2[i] != 'P' && line2[i] != 'C' && line2[i] != 'E')
-			error("Error\n extra objects", game);
+			error("Error\n extra objects", game, 0);
 		if (line2[i] == 'C')
 			game->count.collect++;
 		if (line2[i] == 'E')
@@ -81,15 +81,14 @@ static void	counter(t_game *game, char *line2)
 	}
 	if (game->count.collect < 1 || game->count.exit < 1 || \
 	game->count.start != 1)
-		error("Error\n invalid map (C, E, P, 0)", game);
+		error("Error\n invalid map (C, E, P, 0)", game, 0);
 }
 
 static void	map_name(char *av, t_game *game)
 {
 	if (ft_strnstr(av, ".ber", ft_strlen(av)) == NULL)
 	{
-		printf("%s", av);
-		error("Error\n incorrect map name", game);
+		error("Error\n incorrect map name", game, 0);
 		return ;
 	}
 }
@@ -101,7 +100,7 @@ void	map_valid(char *av, t_game *game)
 	map_name(av, game);
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
-		error("Error\n invalid file", game);
+		error("Error\n invalid file", game, 0);
 	game->picture.line1 = ft_strdup("");
 	game->picture.line2 = ft_strdup("");
 	game->picture.height = 0;

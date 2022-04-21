@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 18:29:54 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/19 16:59:09 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/21 17:15:21 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	draw_mini(t_game *game)
 	int	n;
 
 	i = 0;
-	images(game);
 	while (game->picture.map[i] != NULL)
 	{
 		n = 0;
@@ -53,16 +52,16 @@ void	draw2(t_game *game, int i, int n)
 		n * 32, i * 32);
 	if (game->picture.map[i][n] == 'C')
 	{
-		game->collection.height = i;
-		game->collection.width = n;
 		mlx_put_image_to_window(game->mlx, game->mlx_win, \
 		game->collection.img, n * 32, i * 32);
+		game->collection.height = i;
+		game->collection.width = n;
 	}
 	if (game->picture.map[i][n] == 'P')
 	{
+		draw_chr2(game);
 		game->chrct.height = i;
 		game->chrct.width = n;
-		draw_chr2(game);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, \
 		game->chrct.img, n * 32, i * 32);
 	}
