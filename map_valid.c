@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/21 16:45:43 by estrong          ###   ########.fr       */
+/*   Updated: 2022/04/22 15:05:56 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	check_wall(t_game *game, char **map, int width, int height)
 		error("Error\n not a rectangular map", game, 1);
 }
 
-static void	counter(t_game *game, char *line2)
+static void	counter(t_game *game)
 {
 	int	i;
 
@@ -64,24 +64,30 @@ static void	counter(t_game *game, char *line2)
 	game->count.exit = 0;
 	game->count.collect = 0;
 	game->count.floor = 0;
-	while (line2[i])
+	while (game->picture.line2[i])
 	{
-		if (line2[i] == '\n')
+		if (game->picture.line2[i] == '\n')
 			i++;
-		if (line2[i] != '1' && line2[i] != '0' && \
-		line2[i] != 'P' && line2[i] != 'C' && line2[i] != 'E')
+		if (game->picture.line2[i] != '1' && game->picture.line2[i] != '0' && \
+		game->picture.line2[i] != 'P' && game->picture.line2[i] != 'C' && game->picture.line2[i] != 'E')
+		{
+			free(game->picture.line2);
 			error("Error\n extra objects", game, 0);
-		if (line2[i] == 'C')
+		}
+		if (game->picture.line2[i] == 'C')
 			game->count.collect++;
-		if (line2[i] == 'E')
+		if (game->picture.line2[i] == 'E')
 			game->count.exit++;
-		if (line2[i] == 'P')
+		if (game->picture.line2[i] == 'P')
 			game->count.start++;
 		i++;
 	}
 	if (game->count.collect < 1 || game->count.exit < 1 || \
 	game->count.start != 1)
+	{
+		free(game->picture.line2);
 		error("Error\n invalid map (C, E, P, 0)", game, 0);
+	}
 }
 
 static void	map_name(char *av, t_game *game)
@@ -114,7 +120,7 @@ void	map_valid(char *av, t_game *game)
 		free(game->picture.line1);
 		game->picture.height++;
 	}
-	counter(game, game->picture.line2);
+	counter(game);
 	game->picture.map = ft_split(game->picture.line2, '\n');
 	free(game->picture.line2);
 	game->picture.width = check_len(game);
