@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:11 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/21 17:18:08 by estrong          ###   ########.fr       */
+/*   Updated: 2022/05/04 18:47:27 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ void	draw_mini(t_game *game);
 void	chr_draw(t_game *game);
 void	draw_chr2(t_game *game);
 void	draw2(t_game *game, int i, int n);
-
 
 #endif

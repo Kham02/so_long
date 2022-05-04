@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/22 15:05:56 by estrong          ###   ########.fr       */
+/*   Updated: 2022/05/04 18:46:04 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,24 @@ static void	counter(t_game *game)
 	game->count.exit = 0;
 	game->count.collect = 0;
 	game->count.floor = 0;
-	while (game->picture.line2[i])
+	while (game->picture.line2[i++])
 	{
 		if (game->picture.line2[i] == '\n')
 			i++;
 		if (game->picture.line2[i] != '1' && game->picture.line2[i] != '0' && \
-		game->picture.line2[i] != 'P' && game->picture.line2[i] != 'C' && game->picture.line2[i] != 'E')
-		{
-			free(game->picture.line2);
+		game->picture.line2[i] != 'P' && game->picture.line2[i] != 'C' \
+		&& game->picture.line2[i] != 'E')
 			error("Error\n extra objects", game, 0);
-		}
 		if (game->picture.line2[i] == 'C')
 			game->count.collect++;
 		if (game->picture.line2[i] == 'E')
 			game->count.exit++;
 		if (game->picture.line2[i] == 'P')
 			game->count.start++;
-		i++;
 	}
 	if (game->count.collect < 1 || game->count.exit < 1 || \
 	game->count.start != 1)
-	{
-		free(game->picture.line2);
 		error("Error\n invalid map (C, E, P, 0)", game, 0);
-	}
 }
 
 static void	map_name(char *av, t_game *game)

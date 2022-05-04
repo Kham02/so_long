@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:33 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/22 15:03:28 by estrong          ###   ########.fr       */
+/*   Updated: 2022/05/04 18:44:19 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,22 @@ void	destroy_img(t_game *game)
 
 char	error(char *mes, t_game *game, int i)
 {
+	if (game->picture.line1)
+		free(game->picture.line1);
+	if (game->picture.line2)
+		free(game->picture.line2);
 	write(2, mes, ft_strlen(mes));
 	write(2, "\n", 1);
-	free(game);
-	game = NULL;
 	if (i != 0)
 		free_map(game);
+	free(game);
+	game = NULL;
 	exit(1);
 }
 
 int	end_game(t_game *game)
 {
 	destroy_img(game);
-	// printf("%p\n %p\n %p\n %p\n %p\n", &game->picture.map, &game->picture.map[1], &game->picture.map[2], &game->picture.map[3], &game->picture.map[4]);
 	mlx_destroy_window(game->mlx, game->mlx_win);
 	free(game->mlx);
 	free_map(game);
