@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/05/06 18:30:40 by estrong          ###   ########.fr       */
+/*   Updated: 2022/05/06 18:58:49 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,9 @@ void	map_valid(char *av, t_game *game)
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 		error("Error\n invalid file", game, 0);
-	game->picture.line1 = (char *)malloc(sizeof(char));
-	game->picture.line2 = (char *)malloc(sizeof(char));
+	game->picture.line2 = ft_strdup("");
 	game->picture.height = 0;
-	while (fd >= 0)
+	while (fd)
 	{
 		game->picture.line1 = get_next_line(fd);
 		if (game->picture.line1 == NULL)
