@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 20:07:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/18 16:52:02 by estrong          ###   ########.fr       */
+/*   Updated: 2022/05/06 17:50:21 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	while (s2[i])
 		str[n++] = s2[i++];
-	free((char *)s1);
 	str[n] = '\0';
 	return (str);
 }

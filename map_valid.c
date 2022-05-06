@@ -6,7 +6,7 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/05/04 18:46:04 by estrong          ###   ########.fr       */
+/*   Updated: 2022/05/06 18:30:40 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ static int	check_len(t_game *game)
 			error("Error\n invalid map (length mismatch)", game, 1);
 		i++;
 	}
+	if (game->count.collect < 1 || game->count.exit < 1 || \
+	game->count.start != 1)
+		error("Error\n invalid map (C, E, P, 0)", game, 0);
 	return (len);
 }
 
@@ -55,33 +58,29 @@ static void	check_wall(t_game *game, char **map, int width, int height)
 		error("Error\n not a rectangular map", game, 1);
 }
 
-static void	counter(t_game *game)
+static void	counter(t_game *game, char *line2)
 {
 	int	i;
 
 	i = 0;
-	game->count.start = 0;
-	game->count.exit = 0;
-	game->count.collect = 0;
-	game->count.floor = 0;
-	while (game->picture.line2[i++])
+	while (line2[i])
 	{
-		if (game->picture.line2[i] == '\n')
+		if (line2[i] == '\n')
 			i++;
-		if (game->picture.line2[i] != '1' && game->picture.line2[i] != '0' && \
-		game->picture.line2[i] != 'P' && game->picture.line2[i] != 'C' \
-		&& game->picture.line2[i] != 'E')
+		if (line2[i] != '1' && line2[i] != '0' && line2[i] != 'P' \
+		&& line2[i] != 'C' && line2[i] != 'E')
+		{
+			free(game->picture.line2);
 			error("Error\n extra objects", game, 0);
-		if (game->picture.line2[i] == 'C')
+		}
+		if (line2[i] == 'C')
 			game->count.collect++;
-		if (game->picture.line2[i] == 'E')
+		if (line2[i] == 'E')
 			game->count.exit++;
-		if (game->picture.line2[i] == 'P')
+		if (line2[i] == 'P')
 			game->count.start++;
+		i++;
 	}
-	if (game->count.collect < 1 || game->count.exit < 1 || \
-	game->count.start != 1)
-		error("Error\n invalid map (C, E, P, 0)", game, 0);
 }
 
 static void	map_name(char *av, t_game *game)
@@ -91,6 +90,10 @@ static void	map_name(char *av, t_game *game)
 		error("Error\n incorrect map name", game, 0);
 		return ;
 	}
+	game->count.start = 0;
+	game->count.exit = 0;
+	game->count.collect = 0;
+	game->count.floor = 0;
 }
 
 void	map_valid(char *av, t_game *game)
@@ -101,20 +104,20 @@ void	map_valid(char *av, t_game *game)
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 		error("Error\n invalid file", game, 0);
-	game->picture.line1 = ft_strdup("");
-	game->picture.line2 = ft_strdup("");
+	game->picture.line1 = (char *)malloc(sizeof(char));
+	game->picture.line2 = (char *)malloc(sizeof(char));
 	game->picture.height = 0;
 	while (fd >= 0)
 	{
 		game->picture.line1 = get_next_line(fd);
 		if (game->picture.line1 == NULL)
 			break ;
-		game->picture.line2 = ft_strjoin(game->picture.line2, \
+		game->picture.line2 = g_ft_strjoin(game->picture.line2, \
 		game->picture.line1);
 		free(game->picture.line1);
 		game->picture.height++;
 	}
-	counter(game);
+	counter(game, game->picture.line2);
 	game->picture.map = ft_split(game->picture.line2, '\n');
 	free(game->picture.line2);
 	game->picture.width = check_len(game);
