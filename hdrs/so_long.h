@@ -6,23 +6,61 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:31:11 by estrong           #+#    #+#             */
-/*   Updated: 2022/05/06 18:31:44 by estrong          ###   ########.fr       */
+/*   Updated: 2022/06/15 23:54:52 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "Libft/libft.h"
-# include "get_next_line.h"
-
-# include "so_long_utils.h"
+# include "../Libft/libft.h"
+# include "../srcs/get_next_line.h"
 
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <mlx.h>
+
+typedef struct s_img
+{
+	void	*img;
+	int		height;
+	int		width;
+}t_img;
+
+typedef struct s_count
+{
+	int	start;
+	int	exit;
+	int	collect;
+	int	floor;
+	int	wall;
+	int	mov;
+}t_count;
+
+typedef struct s_map
+{
+	char	**map;
+	int		height;
+	int		width;
+	char	*line1;
+	char	*line2;
+}t_map;
+
+typedef struct s_game
+{
+	t_map	picture;
+	t_img	collection;
+	t_img	exit;
+	t_img	wall;
+	t_img	floor;
+	t_img	chrct;
+	t_count	count;
+	void	*mlx;
+	void	*mlx_win;
+	int		mov;
+}t_game;
 
 int		main(int ac, char **av);
 char	error(char *mes, t_game *game, int i);

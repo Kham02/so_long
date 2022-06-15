@@ -6,11 +6,11 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:14 by estrong           #+#    #+#             */
-/*   Updated: 2022/05/06 18:58:49 by estrong          ###   ########.fr       */
+/*   Updated: 2022/06/15 23:53:38 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../hdrs/so_long.h"
 
 static int	check_len(t_game *game)
 {

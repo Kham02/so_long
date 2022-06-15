@@ -6,11 +6,11 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 18:29:54 by estrong           #+#    #+#             */
-/*   Updated: 2022/05/04 18:47:10 by estrong          ###   ########.fr       */
+/*   Updated: 2022/06/15 23:53:41 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../hdrs/so_long.h"
 
 void	draw_mini(t_game *game)
 {

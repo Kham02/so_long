@@ -6,11 +6,11 @@
 /*   By: estrong <estrong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:30:17 by estrong           #+#    #+#             */
-/*   Updated: 2022/04/07 14:12:52 by estrong          ###   ########.fr       */
+/*   Updated: 2022/06/15 23:53:44 by estrong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../hdrs/so_long.h"
 
 void	init_chrct_cllc(t_game *game)
 {
