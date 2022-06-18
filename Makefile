@@ -6,18 +6,24 @@
 #    By: estrong <estrong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/07 13:59:17 by estrong           #+#    #+#              #
-#    Updated: 2022/06/15 23:56:25 by estrong          ###   ########.fr        #
+#    Updated: 2022/06/18 14:28:20 by estrong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
-OBJ		=	main.c	draw_map.c	end_game.c	map_valid.c	mobile_objects.c	mov.c	get_next_line.c	get_next_line_utils.c \
+NAME_B	=	so_long_bonus
+
+SRCS	=	main.c	draw_map.c	end_game.c	map_valid.c	mobile_objects.c	mov.c	get_next_line.c	get_next_line_utils.c \
 			mini_draw.c
 
-SRCS	=	$(patsubst %.c,%.o,$(OBJ))
+SRCS_B	=	
+
+OBJ	=	$(patsubst %.c,%.o,$(SRCS))
+OBJ	=	$(patsubst %.c,%.o,$(SRCS_B))
 
 HEADER	=	../hdrs/so_long.h
+HEADER_B	=	../hdrs/so_long_bonus.h
 
 LFT		=	../Libft
 
@@ -25,25 +31,28 @@ LFT		=	../Libft
 
 # LIB		=	-L Libft/libft.a -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
 
-CC		=	gcc
+CC		=	cc
 
 FLAGS	=	-Wall -Wextra -Werror -I$(HEADER)
 
-.PHONY :	all clean fclean re
+.PHONY :	all clean fclean re bonus
 
 all :	$(NAME)
 
-$(NAME):	$(OBJ) $(HEADER)
+$(NAME):	$(SRCS) $(HEADER)
 	$(MAKE) -C .././Libft
-	# $(CC) -c ${FLAGS} ${OBJ} -I ../Libft/libft.a
-	$(CC) -lmlx -framework OpenGL -framework AppKit $(FLAGS) $(OBJ) ../Libft/libft.a -o $(NAME)
+	# $(CC) -c ${FLAGS} ${SRCS} -I ../Libft/libft.a
+	$(CC) -lmlx -framework OpenGL -framework AppKit $(FLAGS) $(SRCS) ../Libft/libft.a -o $(NAME)
 
 %.o: %.c $(HEADER)
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
+.bonus	:	$(OBJ_B)
+	
+
 clean :
 	@make clean -C $(LFT)
-			rm -rf $(SRCS)
+			rm -rf $(OBJ)
 
 fclean :
 	@make fclean -C $(LFT)
