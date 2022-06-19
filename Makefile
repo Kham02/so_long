@@ -17,7 +17,8 @@ NAME_B	=	so_long_bonus
 SRCS	=	main.c	draw_map.c	end_game.c	map_valid.c	mobile_objects.c	mov.c	get_next_line.c	get_next_line_utils.c \
 			mini_draw.c
 
-SRCS_B	=	
+SRCS_B	=	main_bonus.c	draw_map_bonus.c	end_game_bonus.c	map_valid_bonus.c	mobile_objects_bonus.c \
+			get_next_line_bonus.c	get_next_line_utils_bonus.c	
 
 OBJ	=	$(patsubst %.c,%.o,$(SRCS))
 OBJ	=	$(patsubst %.c,%.o,$(SRCS_B))

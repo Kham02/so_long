@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/so_long.h"
+#include "../hdrs/so_long_bonus.h"
 
 void	draw_map(t_game *game)
 {
@@ -72,6 +72,6 @@ void	create_window(t_game *game)
 	game->mov = 0;
 	game->count.mov = 0;
 	game->mlx_win = mlx_new_window(game->mlx, game->picture.width * 32, \
-	game->picture.height * 32, "so_long");
+	game->picture.height * 32, "so_long_bonus");
 	draw_map(game);
 }

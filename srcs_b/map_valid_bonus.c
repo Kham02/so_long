@@ -68,7 +68,7 @@ static void	counter(t_game *game, char *line2)
 		if (line2[i] == '\n')
 			i++;
 		if (line2[i] != '1' && line2[i] != '0' && line2[i] != 'P' \
-		&& line2[i] != 'C' && line2[i] != 'E')
+		&& line2[i] != 'C' && line2[i] != 'E' && line2[i] != 'X')
 		{
 			free(game->picture.line2);
 			error("Error\n extra objects", game, 0);
@@ -79,31 +79,38 @@ static void	counter(t_game *game, char *line2)
 			game->count.exit++;
 		if (line2[i] == 'P')
 			game->count.start++;
+		if (line2[i] == 'X')
+			game->count.enemy++;
 		i++;
 	}
 }
 
-static void	map_name(char *av, t_game *game)
+static int	map_name(char *av, t_game *game)
 {
+	int	fd;
+
 	if (ft_strnstr(av, ".ber", ft_strlen(av)) == NULL)
 	{
 		error("Error\n incorrect map name", game, 0);
 		return ;
 	}
+	if (!fd = open(av, O_RDONLY))
+		error("Error: invalid file\n", game, 0);
+	if (fd < 0)
+		error("Error\n invalid file", game, 0);
 	game->count.start = 0;
 	game->count.exit = 0;
 	game->count.collect = 0;
 	game->count.floor = 0;
+	game->count.enemy = 0;
+	return(fd);
 }
 
 void	map_valid(char *av, t_game *game)
 {
 	int	fd;
 
-	map_name(av, game);
-	fd = open(av, O_RDONLY);
-	if (fd < 0)
-		error("Error\n invalid file", game, 0);
+	fd = map_name(av, game);
 	game->picture.line2 = ft_strdup("");
 	game->picture.height = 0;
 	while (fd)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdrs/so_long.h"
+#include "../hdrs/so_long_bonus.h"
 
 void	init_chrct_cllc(t_game *game)
 {
