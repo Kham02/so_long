@@ -11,6 +11,7 @@ int	main(int ac, char **av)
 	create_window(&game);
 	mlx_hook(game.mlx_win, 2, (1L << 1), key, &game);
 	mlx_hook(game.mlx_win, 17, (1L << 0), end_game, &game);
+	mlx_hook(game.mlx_win 12, (1L << 15), mini_maker, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }
