@@ -1,4 +1,4 @@
-#include "so_long_bonus.h"
+#include "../hdrs/so_long_bonus.h"
 
 static void	print_fire(t_game *game, int y, int x)
 {

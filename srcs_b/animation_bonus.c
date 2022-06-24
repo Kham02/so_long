@@ -1,4 +1,4 @@
-#include "so_long_bonus.h"
+#include "../hdrs/so_long_bonus.h"
 
 int	fix_pos(int keycode, t_game *game)
 {
@@ -51,7 +51,7 @@ void	print_portal(t_game *game)
 
 void	delay(int milliseconds)
 {
-	long	pause;
+	unsigned long	pause;
 	clock_t	now;
 	clock_t	then;
 

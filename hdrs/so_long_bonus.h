@@ -7,10 +7,21 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <mlx.h>
+# include <time.h>
+# include "../minilibx_opengl/mlx.h"
 
-# include "../Libft/libft.h"
+# include "../libft/libft.h"
 # include "../srcs_b/get_next_line.h"
+
+# define UP		119
+# define DOWN	115
+# define LEFT	97
+# define RIGHT	100
+# define ESC	65307
+# define SPEED	5
+# define RED	"\033[1m\033[31m"
+# define GREEN	"\033[1m\033[32m"
+# define ENDC	"\033[0m"
 
 /* ~~~~~~~~~~~~ struct ~~~~~~~~~~~ */
 

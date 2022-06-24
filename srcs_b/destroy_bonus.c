@@ -1,4 +1,4 @@
-#include "so_long_bonus.h"
+#include "../hdrs/so_long_bonus.h"
 
 static void	destroy_collec_old(t_game *game)
 {
@@ -77,7 +77,6 @@ void	destroy_image(t_game *game)
 	destroy_player_dr(game);
 	destroy_player_lu(game);
 	mlx_destroy_window(game->mlx_pointer, game->window_pointer);
-	mlx_destroy_display(game->mlx_pointer);
 	free_map(game);
 	free(game->mlx_pointer);
 	return ;

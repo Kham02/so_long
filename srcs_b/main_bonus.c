@@ -1,4 +1,4 @@
-#include "so_long_bonus.h"
+#include "../hdrs/so_long_bonus.h"
 
 int	main(int argc, char **argv)
 {

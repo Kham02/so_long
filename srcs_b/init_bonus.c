@@ -1,4 +1,4 @@
-#include "so_long_bonus.h"
+#include "../hdrs/so_long_bonus.h"
 
 void	init_link_down(t_game *game, int i, int j)
 {

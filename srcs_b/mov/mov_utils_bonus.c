@@ -1,4 +1,4 @@
-#include "so_long_bonus.h"
+#include "../../hdrs/so_long_bonus.h"
 
 int	key_check(int keycode, t_game *game)
 {

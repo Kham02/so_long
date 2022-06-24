@@ -13,14 +13,14 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../Libft/libft.h"
+# include "../libft/libft.h"
 # include "../srcs/get_next_line.h"
 
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <mlx.h>
+# include "../minilibx_opengl/mlx.h"
 
 typedef struct s_img
 {

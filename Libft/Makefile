@@ -32,8 +32,8 @@ HEADER	=	libft.h
 
 OBJ = $(patsubst %.c,%.o,$(LIST))
 
-CC = gcc
-FLAGS = -Wall -Wextra -Werror -I$(HEADER)
+CC = cc
+FLAGS = -Wall -Wextra -Werror -I $(HEADER)
 
 all: $(NAME)
 

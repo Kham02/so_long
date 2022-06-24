@@ -1,4 +1,4 @@
-#include "so_long_bonus.h"
+#include "../hdrs/so_long_bonus.h"
 
 static void	check_map_maker(t_game *game, int y, int x)
 {
@@ -110,7 +110,7 @@ void	init_map(t_game *game, char *path)
 		game->plot.line = get_next_line(fd);
 		if (game->plot.line == NULL)
 			break ;
-		game->plot.temp = gnl_strjoinfree(game->plot.temp, game->plot.line);
+		game->plot.temp = g_ft_strjoin(game->plot.temp, game->plot.line);
 		free(game->plot.line);
 		game->plot.height++;
 	}
