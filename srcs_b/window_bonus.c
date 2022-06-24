@@ -84,7 +84,7 @@ void	init_so_long(t_game *game)
 	if (((game->plot.length * 32) > i) || ((game->plot.height * 32) > j))
 	{
 		free_map(game);
-		// mlx_destroy_display(game->mlx_pointer);
+		mlx_destroy_display(game->mlx_pointer);
 		free(game->mlx_pointer);
 		endgame("Map size larger than display resolution", game, 2);
 	}
